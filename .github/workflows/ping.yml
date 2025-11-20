@@ -1,0 +1,13 @@
+name: Keep Render Awake
+
+on:
+  schedule:
+    - cron: "*/1 * * * *"   # Runs every 5 minutes
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping LL Cart Backend
+        run: |
+          curl -fsS https://llcartbackend.onrender.com/product/viewallproducts > /dev/null || true
